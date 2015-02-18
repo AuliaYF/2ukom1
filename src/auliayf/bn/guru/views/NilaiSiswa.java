@@ -389,6 +389,8 @@ public class NilaiSiswa extends javax.swing.JFrame {
             jTextField2.setText(jTable1.getValueAt(selected, 3).toString());
 
             setEditable(true);
+            
+            mode = 1;
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

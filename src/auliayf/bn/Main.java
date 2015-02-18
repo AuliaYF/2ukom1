@@ -60,7 +60,7 @@ public class Main extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Main");
+        setTitle("Aplikasi Pelaporan Hasil Belajar Siswa");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
