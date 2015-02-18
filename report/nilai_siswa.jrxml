@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nilai_siswa" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aad09425-9a5c-4069-9a5e-417be210cac7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nama" class="java.lang.String"/>
+	<parameter name="tgl_lahir" class="java.lang.String"/>
+	<parameter name="nisn" class="java.lang.String"/>
+	<parameter name="guru" class="java.lang.String"/>
+	<parameter name="foto" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select nama_sk as `nama_sk`, nilai_angka as `nilai_angka`, nilai_huruf as `nilai huruf` from nilai join siswa on siswa.nisn = nilai.nisn join standar_kompetensi on standar_kompetensi.kode_sk = nilai.kode_sk where nilai.nisn = $P{nisn} and kode_guru = $P{guru}]]>
+	</queryString>
+	<field name="nama_sk" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai_angka" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nilai huruf" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="3039edf8-c4a2-4e00-a29a-6548847fc57a"/>
+				<textField>
+					<reportElement x="88" y="23" width="487" height="50" forecolor="#FFFFFF" uuid="2759b143-81a2-479c-8e7a-ec9f3487dd65"/>
+					<textElement verticalAlignment="Middle">
+						<font size="28"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nama}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="88" y="53" width="487" height="20" forecolor="#FFFFFF" uuid="9b2b918f-32a8-4fc3-82b5-b80e44a6ebff"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Tanggal Lahir: " + $P{tgl_lahir}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="88" y="23" width="487" height="20" forecolor="#FFFFFF" uuid="4e322fb7-340b-4d00-87c4-785289b902a8"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA["NISN: " + $P{nisn}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="FillFrame">
+					<reportElement stretchType="RelativeToBandHeight" x="20" y="23" width="55" height="50" uuid="5e8ac8ab-9f60-4029-b8eb-ba7137be207f"/>
+					<imageExpression><![CDATA[$P{foto}]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2748de2d-3ddc-4740-ae72-e409eff06ea6"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="237" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="28e8b770-6568-44a2-802a-875ee583736c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Standar Kompetensi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="237" y="0" width="89" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7d97ff72-2f84-43e4-aa3f-1cd644e47c0b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nilai Angka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="326" y="0" width="229" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2ad0705a-60bb-486e-9618-32de762e0732"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nilai Huruf]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="689a9c15-9512-4ee6-baa2-61d673ecda00"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="237" height="20" uuid="32c53d61-512f-45ed-9869-3cd38f2a20a2"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_sk}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="237" y="0" width="89" height="20" uuid="f312c6ba-d32c-4e4f-a1a8-bfd636da4d0f"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nilai_angka}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="326" y="0" width="229" height="20" uuid="d76e166a-4d61-44a1-876a-2f68cc0208ee"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nilai huruf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26">
+			<staticText>
+				<reportElement mode="Opaque" x="499" y="0" width="56" height="13" backcolor="#E6E6E6" uuid="1c136459-f899-4007-82f0-1d68c1c6fda6"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="524" y="13" width="31" height="13" backcolor="#CCCCCC" uuid="091ba7f9-f233-405e-b079-c3e01c2f0270"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="13" width="31" height="13" backcolor="#CCCCCC" uuid="d33794bc-2c6d-42eb-85bb-7ac413a626ea"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="18" y="13" width="521" height="13" backcolor="#CCCCCC" uuid="1b4a9223-058d-4d02-9114-b76412af812c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of" + " " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="18" y="13" width="100" height="13" uuid="d4022a56-088d-44d8-8aa2-75e0cc50d077"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="539" height="13" backcolor="#E6E6E6" uuid="3e7f05ba-00df-41ed-85eb-ef1114a4ac2b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Jumlah Data: " + $V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
