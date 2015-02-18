@@ -5,6 +5,7 @@
  */
 package auliayf.bn.guru.views;
 
+import auliayf.bn.core.Utils;
 import auliayf.bn.core.db;
 import java.io.File;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class ReportView extends JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Nilai Siswa");
+        Utils.center_the_form(ReportView.this);
     }
 
     public void callReport() {
