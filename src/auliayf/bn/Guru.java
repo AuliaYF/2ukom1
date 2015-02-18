@@ -7,9 +7,9 @@ package auliayf.bn;
 
 import auliayf.bn.core.Session;
 import auliayf.bn.core.Utils;
+import auliayf.bn.guru.views.ReportView;
 import auliayf.bn.guru.views.SiswaGuru;
-import auliayf.bn.views.KompetensiKeahlianView;
-import auliayf.bn.views.MataDiklatView;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class Guru extends javax.swing.JFrame {
     public Guru() {
         initComponents();
 
-        Utils.center_the_form(this);
+        Utils.center_the_form(Guru.this);
 
         jLabel1.setText(jLabel1.getText() + Session.CURRENT_USER.get("nama_guru"));
     }
@@ -112,8 +112,8 @@ public class Guru extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/s_loggoff.png"))); // NOI18N
-        jButton2.setText("Logout");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/b_sql.png"))); // NOI18N
+        jButton2.setText("Report");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -194,11 +194,12 @@ public class Guru extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JFrame form = new Login();
-        Utils.center_the_form(form);
-        form.setVisible(true);
-        Session.CURRENT_USER = null;
-        dispose();
+        HashMap<String, Object> param = new HashMap<>();
+        param.put("nama_guru", Session.CURRENT_USER.get("nama_guru"));
+        param.put("kode_kk", Session.CURRENT_USER.get("kode_kk"));
+
+        ReportView rpt = new ReportView("siswa_saya", param);
+        rpt.callReport();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -217,19 +218,14 @@ public class Guru extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Guru.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Guru.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Guru.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Guru.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Guru().setVisible(true);
             }
