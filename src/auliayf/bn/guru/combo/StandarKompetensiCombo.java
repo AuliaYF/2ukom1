@@ -5,7 +5,6 @@
  */
 package auliayf.bn.guru.combo;
 
-import auliayf.bn.combo.*;
 import auliayf.bn.core.Session;
 import auliayf.bn.core.db;
 import java.util.List;
@@ -18,7 +17,7 @@ import javax.swing.ComboBoxModel;
  */
 public class StandarKompetensiCombo extends AbstractListModel implements ComboBoxModel {
 
-    private String[] data;
+    private final String[] data;
     private String selected;
 
     public StandarKompetensiCombo() {

@@ -7,7 +7,6 @@ package auliayf.bn;
 
 import auliayf.bn.core.Session;
 import auliayf.bn.core.Utils;
-import auliayf.bn.core.db;
 import auliayf.bn.views.GuruView;
 import auliayf.bn.views.KompetensiKeahlianView;
 import auliayf.bn.views.MataDiklatView;
@@ -30,7 +29,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
 
-        Utils.center_the_form(this);
+        Utils.center_the_form(Main.this);
     }
 
     /**
@@ -307,19 +306,14 @@ public class Main extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main().setVisible(true);
             }

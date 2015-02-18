@@ -22,8 +22,8 @@ import net.sf.jasperreports.view.JRViewer;
  */
 public class ReportView extends JFrame {
 
-    private String reportName;
-    private HashMap<String, Object> param;
+    private final String reportName;
+    private final HashMap<String, Object> param;
 
     public ReportView(String report_name, HashMap<String, Object> param) {
         this.reportName = report_name;
@@ -32,7 +32,7 @@ public class ReportView extends JFrame {
         init();
     }
 
-    void init() {
+    private void init() {
         setExtendedState(MAXIMIZED_BOTH);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Nilai Siswa");

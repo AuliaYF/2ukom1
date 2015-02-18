@@ -8,7 +8,6 @@ package auliayf.bn.guru.tables;
 import auliayf.bn.core.db;
 import auliayf.bn.core.table;
 import java.util.List;
-import javax.swing.table.AbstractTableModel;
 
 /**
  *

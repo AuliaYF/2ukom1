@@ -16,7 +16,7 @@ import javax.swing.ComboBoxModel;
  */
 public class SiswaCombo extends AbstractListModel implements ComboBoxModel {
 
-    private String[] data;
+    private final String[] data;
     private String selected;
 
     public SiswaCombo() {

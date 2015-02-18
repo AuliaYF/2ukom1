@@ -10,7 +10,6 @@ import auliayf.bn.core.Utils;
 import auliayf.bn.core.db;
 import auliayf.bn.guru.combo.StandarKompetensiCombo;
 import auliayf.bn.guru.tables.NilaiSiswaTable;
-import auliayf.bn.models.GuruModel;
 import auliayf.bn.models.NilaiModel;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,6 +28,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
 
     /**
      * Creates new form NilaiSiswa
+     * @param siswa
      */
     public NilaiSiswa(db.Model siswa) {
         initComponents();
@@ -71,7 +71,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
         }
     }
 
-    void refresh() {
+    private void refresh() {
         jComboBox1.setModel(new StandarKompetensiCombo());
         jComboBox1.setSelectedIndex(0);
 
@@ -402,7 +402,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
             setEditable(true);
             this.mode = 0;
         } else {
-            int result = -1;
+            int result;
             if (mode == 0) {
                 result = NilaiModel.insert(this.mSiswa.get("nisn").toString(), Session.CURRENT_USER.get("kode_guru").toString(), jComboBox1.getSelectedItem().toString().split(" ")[0], jTextField1.getText(), jTextField2.getText());
             } else {
@@ -467,19 +467,14 @@ public class NilaiSiswa extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NilaiSiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NilaiSiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NilaiSiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NilaiSiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new NilaiSiswa(null).setVisible(true);
             }

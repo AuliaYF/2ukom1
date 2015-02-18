@@ -16,7 +16,7 @@ import javax.swing.ComboBoxModel;
  */
 public class GuruCombo extends AbstractListModel implements ComboBoxModel {
 
-    private String[] data;
+    private final String[] data;
     private String selected;
 
     public GuruCombo() {
