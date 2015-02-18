@@ -11,12 +11,16 @@ import java.util.List;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class NilaiTable extends table {
 
     private final String[] cols = {"Kode Nilai", "Siswa", "Guru", "Standar Kompetensi", "Nilai Angka", "Nilai Huruf"};
 
+    /**
+     *
+     * @param models
+     */
     public NilaiTable(List<db.Model> models) {
         super(models);
     }
@@ -41,6 +45,10 @@ public class NilaiTable extends table {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String[] getCols() {
         return cols;

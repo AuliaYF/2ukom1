@@ -11,12 +11,16 @@ import java.util.List;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class SiswaGuruTable extends table {
 
     private final String[] cols = {"NISN", "Nama Siswa", "Tanggal Lahir", "Foto Siswa"};
 
+    /**
+     *
+     * @param models
+     */
     public SiswaGuruTable(List<db.Model> models) {
         super(models);
     }
@@ -37,6 +41,10 @@ public class SiswaGuruTable extends table {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String[] getCols() {
         return cols;

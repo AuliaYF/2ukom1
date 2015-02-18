@@ -14,10 +14,19 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class NilaiModel {
 
+    /**
+     *
+     * @param siswa
+     * @param guru
+     * @param sk
+     * @param angka
+     * @param huruf
+     * @return
+     */
     public static int insert(String siswa, String guru, String sk, String angka, String huruf) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -51,6 +60,11 @@ public class NilaiModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @return
+     */
     public static int delete(String kode) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -80,6 +94,16 @@ public class NilaiModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @param siswa
+     * @param guru
+     * @param sk
+     * @param angka
+     * @param huruf
+     * @return
+     */
     public static int update(String kode, String siswa, String guru, String sk, String angka, String huruf) {
         Connection conn = null;
         PreparedStatement statement = null;

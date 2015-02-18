@@ -14,10 +14,18 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class StandarKompetensiModel {
 
+    /**
+     *
+     * @param kode
+     * @param kompetensi
+     * @param nama
+     * @param kelas
+     * @return
+     */
     public static int insert(String kode, String kompetensi, String nama, String kelas) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -50,6 +58,11 @@ public class StandarKompetensiModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @return
+     */
     public static int delete(String kode) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -79,6 +92,14 @@ public class StandarKompetensiModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @param kompetensi
+     * @param nama
+     * @param kelas
+     * @return
+     */
     public static int update(String kode, String kompetensi, String nama, String kelas) {
         Connection conn = null;
         PreparedStatement statement = null;

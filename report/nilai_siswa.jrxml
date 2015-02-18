@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nilai_siswa" language="groovy" pageWidth="595" pageHeight="400" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aad09425-9a5c-4069-9a5e-417be210cac7">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="164"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="nama" class="java.lang.String"/>
 	<parameter name="tgl_lahir" class="java.lang.String"/>
@@ -105,7 +105,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="326" y="0" width="229" height="20" uuid="d76e166a-4d61-44a1-876a-2f68cc0208ee"/>
-				<textElement textAlignment="Left">
+				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nilai huruf}]]></textFieldExpression>

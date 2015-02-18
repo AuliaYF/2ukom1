@@ -11,12 +11,16 @@ import java.util.List;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class WaliMuridTable extends table {
 
     private final String[] cols = {"Kode Wali", "Siswa", "Nama Ayah", "Pekerjaan Ayah", "Nama Ibu", "Pekerjaan Ibu", "Alamat Wali", "Telpon Wali"};
 
+    /**
+     *
+     * @param models
+     */
     public WaliMuridTable(List<db.Model> models) {
         super(models);
     }
@@ -45,6 +49,10 @@ public class WaliMuridTable extends table {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String[] getCols() {
         return cols;

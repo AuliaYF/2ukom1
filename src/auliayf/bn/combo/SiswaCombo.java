@@ -12,13 +12,16 @@ import javax.swing.ComboBoxModel;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class SiswaCombo extends AbstractListModel implements ComboBoxModel {
 
     private final String[] data;
     private String selected;
 
+    /**
+     *
+     */
     public SiswaCombo() {
         List<db.Model> models = db.query(new db.Query("siswa"));
         String combo[] = new String[models.size()];

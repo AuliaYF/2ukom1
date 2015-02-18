@@ -14,10 +14,20 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class GuruModel {
 
+    /**
+     *
+     * @param kode
+     * @param kompetensi
+     * @param nama
+     * @param nip
+     * @param alamat
+     * @param telp
+     * @return
+     */
     public static int insert(String kode, String kompetensi, String nama, String nip, String alamat, String telp) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -53,6 +63,11 @@ public class GuruModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @return
+     */
     public static int delete(String kode) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -82,6 +97,16 @@ public class GuruModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @param kompetensi
+     * @param nama
+     * @param nip
+     * @param alamat
+     * @param telp
+     * @return
+     */
     public static int update(String kode, String kompetensi, String nama, String nip, String alamat, String telp) {
         Connection conn = null;
         PreparedStatement statement = null;

@@ -19,13 +19,18 @@ import net.sf.jasperreports.view.JRViewer;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class ReportView extends JFrame {
 
     private final String reportName;
     private final HashMap<String, Object> param;
 
+    /**
+     *
+     * @param report_name
+     * @param param
+     */
     public ReportView(String report_name, HashMap<String, Object> param) {
         this.reportName = report_name;
         this.param = param;
@@ -40,6 +45,9 @@ public class ReportView extends JFrame {
         Utils.center_the_form(ReportView.this);
     }
 
+    /**
+     *
+     */
     public void callReport() {
         JasperPrint jp = generateReport();
         JRViewer viewer = new JRViewer(jp);

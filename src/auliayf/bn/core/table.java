@@ -10,12 +10,19 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public abstract class table extends AbstractTableModel {
 
+    /**
+     *
+     */
     public List<db.Model> mModels;
 
+    /**
+     *
+     * @param models
+     */
     public table(List<db.Model> models) {
         this.mModels = models;
     }
@@ -38,5 +45,9 @@ public abstract class table extends AbstractTableModel {
     @Override
     public abstract Object getValueAt(int rowIndex, int columnIndex);
 
+    /**
+     *
+     * @return
+     */
     public abstract String[] getCols();
 }

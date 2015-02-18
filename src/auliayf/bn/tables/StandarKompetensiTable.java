@@ -11,12 +11,16 @@ import java.util.List;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class StandarKompetensiTable extends table {
 
     private final String[] cols = {"Kode Standar Kompetensi", "Kompetensi Keahlian", "Nama Standar Kompetensi", "Kelas Standar Kompetensi"};
 
+    /**
+     *
+     * @param models
+     */
     public StandarKompetensiTable(List<db.Model> models) {
         super(models);
     }
@@ -37,6 +41,10 @@ public class StandarKompetensiTable extends table {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String[] getCols() {
         return cols;

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class MataDiklatView extends javax.swing.JFrame {
 

@@ -11,12 +11,16 @@ import java.util.List;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class KompetensiKeahlianTable extends table {
 
     private final String[] cols = {"Kode Kompetensi Keahlian", "Mata Diklat", "Nama Kompetensi Keahlian"};
 
+    /**
+     *
+     * @param models
+     */
     public KompetensiKeahlianTable(List<db.Model> models) {
         super(models);
     }
@@ -35,6 +39,10 @@ public class KompetensiKeahlianTable extends table {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String[] getCols() {
         return cols;

@@ -12,13 +12,16 @@ import javax.swing.ComboBoxModel;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class MataDiklatCombo extends AbstractListModel implements ComboBoxModel {
 
     private final String[] data;
     private String selected;
 
+    /**
+     *
+     */
     public MataDiklatCombo() {
         List<db.Model> models = db.query(new db.Query("mata_diklat"));
         String combo[] = new String[models.size()];

@@ -19,7 +19,7 @@ import javax.swing.event.DocumentListener;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class NilaiView extends javax.swing.JFrame {
 

@@ -14,10 +14,22 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class WaliMuridModel {
 
+    /**
+     *
+     * @param kode
+     * @param siswa
+     * @param nama_ayah
+     * @param pekerjaan_ayah
+     * @param nama_ibu
+     * @param pekerjaan_ibu
+     * @param alamat
+     * @param telp
+     * @return
+     */
     public static int insert(String kode, String siswa, String nama_ayah, String pekerjaan_ayah, String nama_ibu, String pekerjaan_ibu, String alamat, String telp) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -54,6 +66,11 @@ public class WaliMuridModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @return
+     */
     public static int delete(String kode) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -83,6 +100,18 @@ public class WaliMuridModel {
         return result;
     }
 
+    /**
+     *
+     * @param kode
+     * @param siswa
+     * @param nama_ayah
+     * @param pekerjaan_ayah
+     * @param nama_ibu
+     * @param pekerjaan_ibu
+     * @param alamat
+     * @param telp
+     * @return
+     */
     public static int update(String kode, String siswa, String nama_ayah, String pekerjaan_ayah, String nama_ibu, String pekerjaan_ibu, String alamat, String telp) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -90,7 +119,7 @@ public class WaliMuridModel {
 
         try {
             conn = db.getConn();
-            statement = conn.prepareStatement("UPDATE wali_murid SET kode_wali = ?, nisn = ?,  nama_ayah = ?, pekerjaan_ayah = ?, nama_ibu = ?, pekerjaan_ibu = ?, alamat_wali = ?, telp_wali = ? WHERE kode_wali = ?");
+            statement = conn.prepareStatement("UPDATE wali_murid SET nisn = ?,  nama_ayah = ?, pekerjaan_ayah = ?, nama_ibu = ?, pekerjaan_ibu = ?, alamat_wali = ?, telp_wali = ? WHERE kode_wali = ?");
 
             statement.setString(1, siswa);
             statement.setString(2, nama_ayah);

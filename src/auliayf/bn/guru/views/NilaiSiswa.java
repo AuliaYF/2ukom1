@@ -18,7 +18,7 @@ import javax.swing.event.DocumentListener;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class NilaiSiswa extends javax.swing.JFrame {
 
@@ -70,7 +70,7 @@ public class NilaiSiswa extends javax.swing.JFrame {
             }
         }
     }
-
+    
     private void refresh() {
         jComboBox1.setModel(new StandarKompetensiCombo());
         jComboBox1.setSelectedIndex(0);

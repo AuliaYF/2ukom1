@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class Utils {
 
@@ -19,11 +19,20 @@ public class Utils {
         "sebelas", "dua belas", "tiga belas", "empat belas", "lima belas", "enam belas", "tujuh belas", "depalan belas", "sembilan belas"};
     private static final String[] tens = {"", "", "dua puluh", "tiga puluh", "empat puluh", "lima puluh", "enam puluh", "tujuh puluh", "delapan puluh", "sembilan puluh"};
 
+    /**
+     *
+     * @param form
+     */
     public static void center_the_form(JFrame form) {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         form.setLocation(dim.width / 2 - form.getWidth() / 2, dim.height / 2 - form.getHeight() / 2);
     }
 
+    /**
+     *
+     * @param n
+     * @return
+     */
     public static String convert(int n) {
         if (n < 20) {
             return units[n];

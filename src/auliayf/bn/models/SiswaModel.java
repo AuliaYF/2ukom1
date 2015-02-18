@@ -14,10 +14,20 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class SiswaModel {
 
+    /**
+     *
+     * @param nisn
+     * @param kompetensi
+     * @param nama
+     * @param tgl_lahir
+     * @param alamat
+     * @param foto_siswa
+     * @return
+     */
     public static int insert(String nisn, String kompetensi, String nama, String tgl_lahir, String alamat, String foto_siswa) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -52,6 +62,11 @@ public class SiswaModel {
         return result;
     }
 
+    /**
+     *
+     * @param nisn
+     * @return
+     */
     public static int delete(String nisn) {
         Connection conn = null;
         PreparedStatement statement = null;
@@ -81,6 +96,16 @@ public class SiswaModel {
         return result;
     }
 
+    /**
+     *
+     * @param nisn
+     * @param kompetensi
+     * @param nama
+     * @param tgl_lahir
+     * @param alamat
+     * @param foto_siswa
+     * @return
+     */
     public static int update(String nisn, String kompetensi, String nama, String tgl_lahir, String alamat, String foto_siswa) {
         Connection conn = null;
         PreparedStatement statement = null;

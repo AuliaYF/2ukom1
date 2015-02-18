@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class GuruView extends javax.swing.JFrame {
     

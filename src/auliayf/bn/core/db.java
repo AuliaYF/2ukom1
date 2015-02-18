@@ -18,16 +18,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author RPL-03 student
+ * db engine
+ * @author AuliaYF
  */
 public class db {
 
+    // <editor-fold defaultstate="collapsed" desc="Beware! This is my brain's children"> 
+    // <editor-fold defaultstate="collapsed" desc="This is the db engine">
     private static final String DB_NAME = "2ukom1";
     private static final String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME;
     private static final String DB_USER = "root";
     private static final String DB_PASS = "";
 
+    /**
+     *
+     * @return
+     */
     public static Connection getConn() {
         Connection conn = null;
         try {
@@ -39,6 +45,11 @@ public class db {
         return conn;
     }
 
+    /**
+     *
+     * @param q
+     * @return
+     */
     public static List<Model> query(Query q) {
         List<Model> models = new ArrayList<>();
         Connection conn = null;
@@ -94,21 +105,44 @@ public class db {
         return cols;
     }
 
-    public static class Model {
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="This is the db model">
+
+    /**
+     *
+     */
+        public static class Model {
 
         private final HashMap<String, Object> mMap = new HashMap<>();
 
+        /**
+         *
+         * @param key
+         * @param value
+         * @return
+         */
         public Model set(String key, Object value) {
             this.mMap.put(key, value);
             return this;
         }
 
+        /**
+         *
+         * @param key
+         * @return
+         */
         public Object get(String key) {
             return this.mMap.get(key);
         }
     }
 
-    public static class Query {
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="This is the Query Builder!">
+
+    /**
+     *
+     */
+        public static class Query {
 
         private String TABLE = null;
         private final ArrayList<String> mSelect = new ArrayList<>();
@@ -118,55 +152,116 @@ public class db {
         private String[] mSort = null;
         private Integer[] mLimit = null;
 
+        /**
+         *
+         * @param table_name
+         */
         public Query(String table_name) {
             this.TABLE = table_name;
         }
 
+        /**
+         *
+         * @param select
+         * @return
+         */
         public Query select(String select) {
             this.mSelect.add(select);
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @return
+         */
         public Query min(String field) {
             this.mSelect.add("MIN(" + field + ")");
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @return
+         */
         public Query max(String field) {
             this.mSelect.add("MAX(" + field + ")");
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @return
+         */
         public Query avg(String field) {
             this.mSelect.add("AVG(" + field + ")");
             return this;
         }
 
+        /**
+         *
+         * @param table
+         * @param arg
+         * @param mode
+         * @return
+         */
         public Query join(String table, String arg, String mode) {
             this.mJoin.add(new String[]{mode, table, arg});
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query join_where(String field, String value) {
             this.mWhere.add(new String[]{" AND ", field + " = " + value});
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query join_or_where(String field, String value) {
             this.mWhere.add(new String[]{" OR ", field + " = " + value});
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query where(String field, String value) {
             this.mWhere.add(new String[]{" AND ", field + " = '" + value + "'"});
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query or_where(String field, String value) {
             this.mWhere.add(new String[]{" OR ", field + " = '" + value + "'"});
             return this;
         }
 
+        /**
+         *
+         * @param type
+         * @param where
+         * @return
+         */
         public Query special_where(String type, String[]  
             ... where){
            StringBuilder builder = new StringBuilder();
@@ -187,6 +282,12 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param type
+         * @param where
+         * @return
+         */
         public Query special_or_where(String type, String[]  
             ... where){
            StringBuilder builder = new StringBuilder();
@@ -207,16 +308,34 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query like(String field, String value) {
             this.mLike.add(new String[]{" AND ", field + " LIKE '%" + value + "%'"});
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @param value
+         * @return
+         */
         public Query or_like(String field, String value) {
             this.mLike.add(new String[]{" OR ", field + " LIKE '%" + value + "%'"});
             return this;
         }
 
+        /**
+         *
+         * @param type
+         * @param like
+         * @return
+         */
         public Query special_like(String type, String[]  
             ... like){
            StringBuilder builder = new StringBuilder();
@@ -237,6 +356,12 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param type
+         * @param like
+         * @return
+         */
         public Query special_or_like(String type, String[]  
             ... like){
            StringBuilder builder = new StringBuilder();
@@ -257,6 +382,11 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @return
+         */
         public Query asc(String field) {
             this.mSort = new String[2];
             this.mSort[0] = "ASC";
@@ -264,6 +394,11 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param field
+         * @return
+         */
         public Query desc(String field) {
             this.mSort = new String[2];
             this.mSort[0] = "DESC";
@@ -271,6 +406,11 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param limit
+         * @return
+         */
         public Query limit(int limit) {
             this.mLimit = new Integer[2];
             this.mLimit[0] = limit;
@@ -278,6 +418,12 @@ public class db {
             return this;
         }
 
+        /**
+         *
+         * @param limit
+         * @param offset
+         * @return
+         */
         public Query limit(int limit, int offset) {
             this.mLimit = new Integer[2];
             this.mLimit[0] = limit;
@@ -366,4 +512,6 @@ public class db {
             return builder.toString();
         }
     }
+    // </editor-fold>
+    // </editor-fold>
 }

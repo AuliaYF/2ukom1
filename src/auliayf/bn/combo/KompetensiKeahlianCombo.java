@@ -12,13 +12,16 @@ import javax.swing.ComboBoxModel;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class KompetensiKeahlianCombo extends AbstractListModel implements ComboBoxModel {
 
     private final String[] data;
     private String selected;
 
+    /**
+     *
+     */
     public KompetensiKeahlianCombo() {
         List<db.Model> models = db.query(new db.Query("kompetensi_keahlian"));
         String combo[] = new String[models.size()];

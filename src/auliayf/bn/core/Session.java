@@ -7,11 +7,17 @@ package auliayf.bn.core;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class Session {
 
+    /**
+     *
+     */
     public static db.Model CURRENT_USER = null;
 
+    /**
+     *
+     */
     public static final String ADMIN_KEY = "admin123";
 }

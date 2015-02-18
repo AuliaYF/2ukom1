@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author RPL-03 student
+ * @author AuliaYF
  */
 public class SiswaView extends javax.swing.JFrame {
 
@@ -39,6 +39,8 @@ public class SiswaView extends javax.swing.JFrame {
     private void refresh() {
         db.Query q = new db.Query("siswa");
         q.join("kompetensi_keahlian", "kompetensi_keahlian.kode_kk = siswa.kode_kk", "");
+        q.asc("nama_siswa");
+        
         List<db.Model> models = db.query(q);
 
         SiswaTable table = new SiswaTable(models);
@@ -381,6 +383,7 @@ public class SiswaView extends javax.swing.JFrame {
         q.or_like("tgl_lahir", jTextField3.getText());
         q.or_like("alamat_siswa", jTextField3.getText());
         q.or_like("foto_siswa", jTextField3.getText());
+        q.asc("nama_siswa");
 
         refresh(q);
     }//GEN-LAST:event_jButton1ActionPerformed
