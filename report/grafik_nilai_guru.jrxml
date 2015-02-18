@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="grafik_nilai_siswa" language="groovy" pageWidth="595" pageHeight="690" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1a90ba9-de6d-4400-878b-4992a67fbac1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="kode_guru" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select count(*) as `nilai_total`, max(nilai_angka), min(nilai_angka), avg(nilai_angka), guru.nama_guru from nilai join guru on guru.kode_guru = $P{kode_guru} join siswa on siswa.nisn = nilai.nisn where nilai.kode_guru = $P{kode_guru}]]>
+	</queryString>
+	<field name="nilai_total" class="java.lang.Long"/>
+	<field name="max(nilai_angka)" class="java.lang.Integer"/>
+	<field name="min(nilai_angka)" class="java.lang.Integer"/>
+	<field name="avg(nilai_angka)" class="java.math.BigDecimal"/>
+	<field name="nama_guru" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="85aa7dec-2080-429c-bbdf-46188b287ca0"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="50" forecolor="#FFFFFF" uuid="6e642485-9000-42c7-8cd2-388ea865b1cb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grafik Nilai]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="20" y="50" width="555" height="20" forecolor="#FFFFFF" uuid="472a9402-5a34-4880-92ba-64ce9c35eaa6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total Data: " + $F{nilai_total}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="20" y="30" width="555" height="20" forecolor="#FFFFFF" uuid="24cc9b3e-e8d0-488e-a4bf-8c615ec5e917"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA["GURU: " + $F{nama_guru}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="f1306efb-bd0f-4407-9774-705d2d0f358e"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="523">
+			<stackedAreaChart>
+				<chart>
+					<reportElement x="0" y="0" width="555" height="500" uuid="0d1e5093-3450-49e5-9df9-49d21f365967"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["MAX"]]></seriesExpression>
+						<categoryExpression><![CDATA["Tertinggi"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{max(nilai_angka)}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["MIN"]]></seriesExpression>
+						<categoryExpression><![CDATA["Terendah"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{min(nilai_angka)}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["AVG"]]></seriesExpression>
+						<categoryExpression><![CDATA["Rata Rata"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{avg(nilai_angka)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<areaPlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</areaPlot>
+			</stackedAreaChart>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="b97a216b-6599-43bc-acab-7c9b13cdb1e9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="906b4ec5-2646-4d64-9c8a-3a5406e57594"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="d974fd9c-1bef-4be1-94d3-c1c131b7c788"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
